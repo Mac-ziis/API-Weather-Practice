@@ -22,6 +22,10 @@ function getWeather(city) {
   request.send();
 }
 
+function kelvinToFahrenheit(kelvin) {
+  return ((kelvin - 273.15) * 9/5 + 32).toFixed(2);
+}
+
 // UI Logic
 
 function printError(request, apiResponse, city) {
@@ -29,8 +33,16 @@ function printError(request, apiResponse, city) {
 }
 
 function printElements(apiResponse, city) {
-  document.querySelector('#showResponse').innerText = `The humidity in ${city} is ${apiResponse.main.humidity}%.
-  The temperature in Kelvins is ${apiResponse.main.temp} degrees.`;
+  const temperatureFahrenheit = kelvinToFahrenheit(apiResponse.main.temp);
+  const humidity = apiResponse.main.humidity;
+  const weatherDescription = apiResponse.weather[0].description;
+  const windSpeed = apiResponse.wind.speed;
+
+  document.querySelector(`#showResponse`).innerText = `Weather in ${city}:
+    - Temperature: ${temperatureFahrenheit}degrees Fahrenheit
+    - Humidity: ${humidity}%
+    - Weather Description: ${weatherDescription}
+    - Wind Speed: ${windSpeed} meter/sec`;
 }
 
 function handleFormSubmission(event) {
