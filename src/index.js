@@ -1,7 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-//import, file name and path for other js files
+//import file name and path for other js files
 
 // Business Logic
 
@@ -39,7 +39,7 @@ function printElements(apiResponse, city) {
   const windSpeed = apiResponse.wind.speed;
 
   document.querySelector(`#showResponse`).innerText = `Weather in ${city}:
-    - Temperature: ${temperatureFahrenheit}degrees Fahrenheit
+    - Temperature: ${temperatureFahrenheit}°F
     - Humidity: ${humidity}%
     - Weather Description: ${weatherDescription}
     - Wind Speed: ${windSpeed} meter/sec`;
